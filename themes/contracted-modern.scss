@@ -1,0 +1,154 @@
+/*** Unified Bubble Color Theme ***/
+:root {
+    /* 统一颜色系统 */
+    --bubble-color: #FFFFFF;
+    --bubble-border: rgba(120, 120, 120, 0.1);
+    --text-color: #262624;
+    --primary-color: #4E6EF2;
+
+    /* 间距系统 */
+    --space-xs: 4px;
+    --space-sm: 8px;
+    --space-md: 12px;
+    --space-lg: 16px;
+    --space-xl: 24px;
+
+    /* 阴影系统 */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* 基础布局 */
+body {
+    background: #FAF9F5 !important;
+    transition: background 0.4s ease !important;
+}
+
+/* 统一消息气泡样式 */
+.message-content-container {
+    background: var(--bubble-color) !important;
+    border: 1px solid var(--bubble-border) !important;
+    border-radius: 12px !important;
+    box-shadow: var(--shadow-sm) !important;
+    margin: var(--space-md) 0 !important;
+    padding: var(--space-lg) !important;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+/* 移除用户和AI的差异样式 */
+.message-user .message-content-container,
+.message-assistant .message-content-container {
+    background: var(--bubble-color) !important;
+    box-shadow: var(--shadow-sm) !important;
+}
+
+/* 保留布局差异（可选） */
+.message-user .message-content-container {
+    margin-left: var(--space-xl) !important;
+    margin-right: var(--space-sm) !important;
+}
+
+.message-assistant .message-content-container {
+    margin-left: var(--space-sm) !important;
+    margin-right: var(--space-xl) !important;
+}
+
+/* 输入栏样式 - 修改底部边距 */
+#inputbar {
+    background: var(--bubble-color) !important;
+    border: 1px solid var(--bubble-border) !important;
+    border-radius: 20px !important;
+    box-shadow: var(--shadow-sm) !important;
+    margin: var(--space-sm) auto var(--space-xs) !important;
+    /* 修改为顶部8px，底部4px */
+    max-width: calc(100% - 48px) !important;
+    padding: var(--space-md) var(--space-lg) !important;
+    transition: all 0.3s ease !important;
+}
+
+#inputbar:hover {
+    box-shadow: var(--shadow-md) !important;
+    transform: translateY(-1px) !important;
+}
+
+/* 字体系统 - 移除行高设置 */
+* {
+    color: var(--text-color) !important;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.01em !important;
+}
+
+/* 代码块样式 */
+pre,
+code {
+    background: rgba(0, 0, 0, 0.03) !important;
+    border-radius: 4px !important;
+    font-family: "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
+}
+
+pre {
+    border: 1px solid var(--bubble-border) !important;
+    padding: var(--space-md) !important;
+}
+
+/* 深色模式适配 */
+body[theme-mode='dark'] {
+    --bubble-color: #30302E;
+    --bubble-border: rgba(255, 255, 255, 0.1);
+    --text-color: #F5F4ED;
+
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+body[theme-mode='dark'] pre {
+    background: rgba(255, 255, 255, 0.05) !important;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .message-content-container {
+        margin: var(--space-sm) 0 !important;
+        padding: var(--space-md) !important;
+    }
+
+    #inputbar {
+        margin: var(--space-xs) auto !important;
+        /* 移动端底部边距更小 */
+        padding: var(--space-sm) var(--space-md) !important;
+    }
+}
+
+/* 微交互效果 */
+.message-content-container:hover {
+    box-shadow: var(--shadow-md) !important;
+    transform: translateY(-2px) !important;
+}
+
+/* 内联Markdown元素修复 */
+.markdown-inline {
+    display: inline;
+    transition: all 0.2s ease-out;
+}
+
+strong,
+b {
+    font-weight: 600;
+    animation: none !important;
+}
+
+em,
+i {
+    font-style: italic;
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.15s ease;
+}
+
+a:hover {
+    text-decoration: underline;
+}
