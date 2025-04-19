@@ -1,0 +1,145 @@
+/* Claude风格Cherry Studio主题 - 基于官方文档优化 */
+:root {
+    /* Claude品牌色系 */
+    --claude-primary: #4a6fa5;
+    --claude-primary-light: #6d8cc3;
+    --claude-secondary: #f8f9fa;
+    --claude-accent: #ff6b35;
+    --claude-text: #2d3748;
+    --claude-light-text: #718096;
+    --claude-border: #e2e8f0;
+    --claude-code-bg: #edf2f7;
+    --claude-success: #48bb78;
+}
+
+/* 主容器 - 适配Cherry Studio结构 */
+.cherry-studio-container {
+    font-family: -apple-system, BlinkMacSystemFont,
+        "Segoe UI", Roboto, Oxygen-Sans,
+        Ubuntu, Cantarell, sans-serif;
+    background: var(--claude-secondary);
+    color: var(--claude-text);
+    line-height: 1.625;
+}
+
+/* 消息系统 - 匹配Cherry的DOM结构 */
+.cherry-message {
+    max-width: 80%;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border-radius: 0.75rem;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+/* 用户消息 */
+.cherry-message.user {
+    background: white;
+    border-left: 4px solid var(--claude-accent);
+    margin-right: auto;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+/* Claude助手消息 */
+.cherry-message.assistant {
+    background: var(--claude-primary);
+    color: white;
+    margin-left: auto;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* 消息内的链接样式 */
+.cherry-message a {
+    color: var(--claude-primary-light);
+    text-decoration: underline;
+}
+
+/* 输入区域 - 适配Cherry Studio */
+.cherry-input-area {
+    background: white;
+    border: 1px solid var(--claude-border);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    margin-top: 2rem;
+}
+
+/* 按钮 - 使用rem单位保证可扩展性 */
+.cherry-btn {
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cherry-btn-primary {
+    background: var(--claude-primary);
+    color: white;
+}
+
+.cherry-btn-primary:hover {
+    background: #3a5a8f;
+    transform: translateY(-1px);
+}
+
+/* 代码块 - 增强可读性 */
+.cherry-code-block {
+    background: var(--claude-code-bg);
+    padding: 1.25rem;
+    border-radius: 0.5rem;
+    font-family: "SF Mono", Menlo, Monaco,
+        "Courier New", monospace;
+    font-size: 0.9375rem;
+    line-height: 1.5;
+    overflow-x: auto;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .cherry-studio-container {
+        padding: 1rem;
+    }
+
+    .cherry-message {
+        max-width: 90%;
+        padding: 1rem;
+    }
+
+    .cherry-input-area {
+        padding: 1rem;
+    }
+}
+
+/* 加载动画 - Claude风格 */
+@keyframes claude-pulse {
+
+    0%,
+    100% {
+        opacity: 0.6;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+.cherry-typing-indicator {
+    display: inline-flex;
+    gap: 0.5rem;
+}
+
+.cherry-typing-dot {
+    width: 0.75rem;
+    height: 0.75rem;
+    background: var(--claude-primary);
+    border-radius: 50%;
+    animation: claude-pulse 1.5s infinite ease-in-out;
+}
+
+.cherry-typing-dot:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.cherry-typing-dot:nth-child(3) {
+    animation-delay: 0.4s;
+}
