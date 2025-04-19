@@ -28,6 +28,9 @@ Based on Cherry Studio v1.2.4
 ## Customization
 You can fork the project and modify your own theme for Cherry Studio, for exact instructions, check [Cherry Studio Docs](https://docs.cherry-ai.com/personalization-settings/css).
 
+## One more Glance
+For other themes, check [One More Glance](./OneMoreGlance.md)
+
 ## Inspiration
 ### Themes
 - Dracula Theme: https://cherrycss.com

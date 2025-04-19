@@ -28,6 +28,9 @@
 ## 自定义
 您可以 fork 该项目并修改自己的 Cherry Studio 主题，具体说明请查看 [Cherry Studio 文档](https://docs.cherry-ai.com/personalization-settings/css)。
 
+## 再看一眼
+如需查看其他主题，请查阅[再看一眼](./OneMoreGlance.md)
+
 ## 灵感来源
 ### 主题
 - Dracula Theme: https://cherrycss.com
