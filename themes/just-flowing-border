@@ -1,0 +1,62 @@
+/* 优雅流彩动画 */
+@keyframes elegantFlow {
+    0% {
+        background-position: 0 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0 50%;
+    }
+}
+
+/* 轻柔发光 */
+@keyframes softGlow {
+    0%, 100% {
+        box-shadow: 0 0 10px rgba(255, 106, 1, 0.1);
+    }
+    50% {
+        box-shadow: 0 0 15px rgba(138, 43, 226, 0.15);
+    }
+}
+
+/* 输入框优雅流彩效果 */
+#inputbar {
+    position: relative;
+}
+
+#inputbar::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    padding: 2px;
+    background: linear-gradient(
+        90deg,
+        #ff6a01,    /* 爱马仕橙 */
+        #f8c91c,    /* 那不勒斯黄 */
+        #8a2be2,    /* 紫罗兰色 */
+        #00bfff,    /* 天蓝色 */
+        #ff6a01     /* 回到橙色 */
+    );
+    background-size: 300% 300%;
+    mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+    -webkit-mask-composite: destination-out;
+    mask-composite: exclude;
+    animation: elegantFlow 6s ease-in-out infinite;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    pointer-events: none;
+    z-index: -1;
+}
+
+#inputbar:focus-within::before {
+    opacity: 1;
+}
+
+#inputbar:focus-within {
+    animation: softGlow 3s ease-in-out infinite;
+}
