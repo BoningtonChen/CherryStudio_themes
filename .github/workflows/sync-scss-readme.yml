@@ -2,7 +2,7 @@ name: Sync SCSS to READMEs
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "master" ]
     paths: 
       - "themes/maple-neon.scss"
       - "docs/README.*.md"
