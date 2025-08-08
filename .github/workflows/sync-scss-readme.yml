@@ -13,6 +13,8 @@ on:
 jobs:
   sync-scss:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
         with:
@@ -40,5 +42,5 @@ jobs:
           else
             git add README.md docs/README.*.md
             git commit -m "docs: Update all READMEs with latest SCSS from maple-neon.scss"
-            git push
+            git push "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git" HEAD:master
           fi
