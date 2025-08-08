@@ -1,0 +1,44 @@
+name: Sync SCSS to READMEs
+
+on:
+  push:
+    branches: [ "main" ]
+    paths: 
+      - "themes/maple-neon.scss"
+      - "docs/README.*.md"
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * *' # Daily at midnight UTC
+
+jobs:
+  sync-scss:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Git config
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+
+      - name: Update READMEs with latest SCSS
+        run: |
+          # Escape SCSS content for sed
+          SCSS_CONTENT=$(sed -e ':a' -e 'N' -e '$!ba' -e 's/[\/&]/\\&/g' -e 's/\n/\\n/g' themes/maple-neon.scss)
+          
+          # Update all README files between the scss code markers
+          for file in README.md docs/README.*.md; do
+            sed -i "/^```scss$/,/^```$/c\`\`\`scss\n$SCSS_CONTENT\n\`\`\`" "$file"
+          done
+
+      - name: Commit changes if modified
+        run: |
+          if git diff --quiet; then
+            echo "No changes to commit"
+          else
+            git add README.md docs/README.*.md
+            git commit -m "docs: Update all READMEs with latest SCSS from maple-neon.scss"
+            git push
+          fi

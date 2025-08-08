@@ -27,7 +27,7 @@ For more information about Cherry Studio, check [here](https://github.com/Cherry
 5. Here you go!
 
 <details>
-<summary>Or copy CSS from here!</summary>
+<summary>Or, if you don't want to modify, directly copy CSS from here!</summary>
 
 ```scss
 /* Maple Neon Theme: Complete Version of Maple Neon */
