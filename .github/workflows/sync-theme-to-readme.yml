@@ -4,20 +4,34 @@ on:
   push:
     paths:
       - "themes/maple-neon.css"
+    branches:
+      - main
+      - master
+  workflow_dispatch:
 
 jobs:
   sync:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 0
 
       - name: Update README files
-        id: update
         run: |
-          # Read CSS content
+          #!/bin/bash
+          set -e
+
+          # Read CSS content from the theme file
+          if [[ ! -f "themes/maple-neon.css" ]]; then
+            echo "Error: themes/maple-neon.css not found"
+            exit 1
+          fi
+
           CSS_CONTENT=$(cat themes/maple-neon.css)
 
           # Function to update a single README file
@@ -25,16 +39,23 @@ jobs:
             local file=$1
             echo "Processing $file..."
 
+            if [[ ! -f "$file" ]]; then
+              echo "Warning: $file not found, skipping..."
+              return 1
+            fi
+
             # Create a temporary file for the new content
             local temp_file=$(mktemp)
             local in_css_block=false
             local changes_made=false
+            local found_css_block=false
 
-            while IFS= read -r line; do
+            while IFS= read -r line || [[ -n "$line" ]]; do
               if [[ "$line" == '```css' ]]; then
                 echo "$line" >> "$temp_file"
                 echo "$CSS_CONTENT" >> "$temp_file"
                 in_css_block=true
+                found_css_block=true
                 changes_made=true
               elif [[ "$line" == '```' ]] && [[ "$in_css_block" == true ]]; then
                 echo "$line" >> "$temp_file"
@@ -42,16 +63,21 @@ jobs:
               elif [[ "$in_css_block" == false ]]; then
                 echo "$line" >> "$temp_file"
               fi
+              # Skip lines inside CSS block (between ```css and ```)
             done < "$file"
 
             # Replace the original file if changes were made
             if [[ "$changes_made" == true ]]; then
               mv "$temp_file" "$file"
-              echo "✓ Updated $file to README."
+              echo "✓ Updated CSS block in $file"
               return 0
             else
-              rm "$temp_file"
-              echo "- No CSS block found in $file"
+              rm -f "$temp_file"
+              if [[ "$found_css_block" == false ]]; then
+                echo "- No CSS block found in $file"
+              else
+                echo "- No changes needed in $file"
+              fi
               return 1
             fi
           }
@@ -59,39 +85,66 @@ jobs:
           # Track if any files were updated
           files_updated=false
 
+          # List of README files to update
+          readme_files=(
+            "README.md"
+            "docs/README.zh.md"
+            "docs/README.fr.md"
+            "docs/README.ja.md"
+          )
+
           # Update all README files
-          for readme in README.md docs/README.zh.md docs/README.fr.md docs/README.ja.md; do
-            if [[ -f "$readme" ]]; then
-              if update_readme "$readme"; then
-                files_updated=true
-              fi
-            else
-              echo "Warning: $readme not found"
+          for readme in "${readme_files[@]}"; do
+            if update_readme "$readme"; then
+              files_updated=true
             fi
           done
 
-      - name: Configure Git
+          # Set output for next step
+          if [[ "$files_updated" == true ]]; then
+            echo "FILES_UPDATED=true" >> $GITHUB_ENV
+          else
+            echo "FILES_UPDATED=false" >> $GITHUB_ENV
+          fi
+
+      - name: Check for changes
+        id: git-check
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          # Check if there are any changes in git
+          if git diff --quiet && git diff --cached --quiet; then
+            echo "No changes detected"
+            echo "HAS_CHANGES=false" >> $GITHUB_ENV
+          else
+            echo "Changes detected"
+            echo "HAS_CHANGES=true" >> $GITHUB_ENV
+            # Show what changed
+            echo "Changed files:"
+            git diff --name-only
+            git diff --cached --name-only
+          fi
+
+      - name: Configure Git
+        if: env.HAS_CHANGES == 'true'
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
 
       - name: Commit and push changes
+        if: env.HAS_CHANGES == 'true'
         run: |
-          # First pull with rebase to get latest changes
-          git pull --rebase origin ${{ github.ref_name }}
+          # Add all modified README files
+          git add README.md docs/README.*.md 2>/dev/null || true
 
-          # Check for changes after pulling
-          if ! git diff --quiet; then
-            echo "Changes detected, committing..."
-
-            # Add and commit changes
-            git add README.md docs/README.*.md
-            git commit -m "docs: Update all READMEs with latest CSS from maple-neon.css [skip ci]"
-
-            # Force push with lease for safety
-            git push --force-with-lease origin ${{ github.ref_name }}
-
-            echo "Changes committed and pushed successfully"
-          else
-            echo "No changes detected after pulling latest changes"
+          # Check if there are staged changes
+          if git diff --cached --quiet; then
+            echo "No staged changes to commit"
+            exit 0
           fi
+
+          # Commit changes
+          git commit -m "docs: sync CSS content from maple-neon.css to README files [skip ci]"
+
+          # Push changes
+          git push origin ${{ github.ref_name }}
+
+          echo "✅ Successfully synced CSS content to README files"
