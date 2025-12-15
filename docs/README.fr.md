@@ -30,179 +30,58 @@ Pour plus d'informations sur Cherry Studio, consultez [ici](https://github.com/C
 <summary>Ou, si vous ne voulez pas modifier, copiez directement le CSS depuis ici !</summary>
 
 ```css
-/* Maple Neon Theme Font Minimal: Une version du thème Maple Neon qui spécifie uniquement les polices */
+/* Maple Neon Minimal Theme for Cherry Studio
+   专注于输入框AI智能体运行时的跑马灯效果 */
 
-/* === 字体设置 === */
+/* === 字体配置 === */
 :root {
+    /* UI字体：使用微软雅黑作为主要UI字体 */
     --font-family:
-        var(--user-font-family), "Microsoft YaHei", "微软雅黑", Ubuntu,
-        -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, Roboto,
-        Oxygen, Cantarell, "Open Sans", "Helvetica Neue", Arial, "Noto Sans",
-        sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
-        "Noto Color Emoji";
+        var(--user-font-family), "Microsoft YaHei", "Microsoft YaHei UI",
+        "微软雅黑", Ubuntu, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        system-ui, Roboto, Oxygen, Cantarell, "Open Sans", "Helvetica Neue",
+        Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+        "Segoe UI Symbol", "Noto Color Emoji";
 
-    --font-family-serif:
-        "Microsoft YaHei", "微软雅黑", serif, -apple-system, BlinkMacSystemFont,
-        "Segoe UI", system-ui, Ubuntu, Roboto, Oxygen, Cantarell, "Open Sans",
-        "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji",
-        "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-
-    /* --- 字体规范对齐 --- */
-    /* 基础字体 (对应规范中的 --font-family) */
-    --content-font: "Microsoft YaHei", "微软雅黑", "DreamHan Serif", "梦源宋体", "Noto Sans", "Noto Sans SC", Ubuntu, -apple-system,
-    BlinkMacSystemFont, "Segoe UI", system-ui, Roboto, Oxygen, Cantarell, "Open Sans", "Helvetica Neue", Arial,
-    "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important;
-    --content-font-weight: normal;
-
-    /* 标题/UI 字体 (对应规范中的 --font-family-serif, 但这里保持无衬线优先) */
-    --title-font: "Microsoft YaHei", "微软雅黑", "DreamHan Sans", "梦源黑体", "Noto Serif", "Noto Serif SC", "Microsoft Sans", -apple-system,
-    BlinkMacSystemFont, "Segoe UI", system-ui, Ubuntu, Roboto, Oxygen, Cantarell, "Open Sans", "Helvetica Neue",
-    serif, Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important;
-    --title-font-weight: bold;
-
-    /* 代码字体 (对应规范中的 --code-font-family) */
-    --monospace-font: "Maple Mono", "Maple Mono NF CN", "Cascadia Code", "Fira Code", "Consolas", Menlo, Courier, monospace !important;
-    --monospace-font-weight: normal;
-
-    --ui-font-weight: bold; /* 保留UI元素的特定粗细控制 */
-
-    // --input-gradient-opacity: 1;
-
-    //   --box-shadow-message: 0 4px 16px -8px rgba(0, 0, 0, 0.04);
-    //   --border-radius-message: 16px;
+    /* 代码字体：使用Maple Mono作为代码字体 */
+    --code-font-family:
+        var(--user-code-font-family), "Maple Mono", "Maple Mono NF",
+        "Cascadia Code", "Fira Code", "Consolas", Menlo, Courier, monospace;
 }
 
 /* Windows系统专用字体配置 */
 body[os="windows"] {
     --font-family:
-        var(--user-font-family), "Microsoft YaHei", "微软雅黑",
-        "Twemoji Country Flags", Ubuntu, -apple-system, BlinkMacSystemFont,
-        "Segoe UI", system-ui, Roboto, Oxygen, Cantarell, "Open Sans",
-        "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
-        "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        var(--user-font-family), "Microsoft YaHei", "Microsoft YaHei UI",
+        "微软雅黑", "Twemoji Country Flags", Ubuntu, -apple-system,
+        BlinkMacSystemFont, "Segoe UI", system-ui, Roboto, Oxygen, Cantarell,
+        "Open Sans", "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+        "Noto Color Emoji";
 
     --code-font-family:
-        var(--user-code-font-family), "Maple Mono", "Cascadia Code",
-        "Fira Code", "Consolas", "Sarasa Mono SC", "Microsoft YaHei UI",
-        "微软雅黑", Courier, monospace;
+        var(--user-code-font-family), "Maple Mono", "Maple Mono NF",
+        "Cascadia Code", "Fira Code", "Consolas", "Sarasa Mono SC",
+        "Microsoft YaHei UI", Courier, monospace;
 }
 
-/* === Markdown字体配置 === */
-/* 标题字体 - 使用梦源黑体，层次分明 */
-.markdown h1,
-.markdown h2,
-.markdown h3,
-.markdown h4,
-.markdown h5,
-.markdown h6 {
-    font-family: "DreamHan Sans", "梦源黑体", var(--font-family);
-    font-weight: 600;
-    letter-spacing: 0.02em;
+/* 应用字体到具体元素 */
+body {
+    font-family: var(--font-family);
 }
 
-/* H1和H2使用更粗的字重，突出重要性 */
-.markdown h1,
-.markdown h2 {
-    font-weight: 700;
-    letter-spacing: 0.01em;
-}
-
-/* 正文内容 - 使用梦源宋体，提升阅读体验，排除代码元素 */
-.markdown p:not(pre p),
-.markdown li:not(pre li),
-.markdown span:not(code):not(pre span):not(.shiki span) {
-    font-family: "DreamHan Serif", "梦源宋体", var(--font-family);
-    line-height: 1.7;
-    letter-spacing: 0.01em;
-}
-
-/* 引用块 - 使用梦源宋体斜体，增强视觉区分 */
-.markdown blockquote,
-.markdown .markdown-alert {
-    font-family: "DreamHan Serif", "梦源宋体", var(--font-family);
-    font-style: italic;
-    line-height: 1.6;
-    letter-spacing: 0.015em;
-}
-
-/* 表格 - 使用梦源黑体，保证数据清晰 */
-.markdown table,
-.markdown th,
-.markdown td {
-    font-family: "DreamHan Sans", "梦源黑体", var(--font-family);
-}
-
-.markdown th {
-    font-weight: 600;
-    letter-spacing: 0.02em;
-}
-
-.markdown td {
-    font-weight: 400;
-    letter-spacing: 0.01em;
-}
-
-/* 强调文本 */
-.markdown strong {
-    font-family: "DreamHan Sans", "梦源黑体", var(--font-family);
-    font-weight: 700;
-}
-
-.markdown em {
-    font-family: "DreamHan Serif", "梦源宋体", var(--font-family);
-    font-style: italic;
-}
-
-/* 链接 */
-.markdown a,
-.markdown .link {
-    font-family: "DreamHan Sans", "梦源黑体", var(--font-family);
-    font-weight: 500;
-}
-
-/* 脚注 */
-.footnotes {
-    font-family: "DreamHan Serif", "梦源宋体", var(--font-family);
-    font-size: 0.9em;
-    line-height: 1.5;
-}
-
-/* 代码字体 - 最高优先级确保Maple Mono */
-.markdown code,
-.markdown pre,
-.markdown pre *,
-.markdown pre code,
-.markdown code *,
+/* 代码相关元素使用Maple Mono字体 */
 code,
 pre,
-pre *,
-*[class*="code"] {
+.markdown code,
+.markdown pre,
+.shiki,
+.cm-editor .cm-scroller,
+kbd,
+samp,
+tt,
+var {
     font-family: var(--code-font-family) !important;
-}
-
-/* 内联代码 - 确保在任何容器中都使用Maple Mono */
-.markdown p code,
-.markdown li code,
-.markdown span code,
-.markdown div code,
-.markdown blockquote code,
-.markdown .markdown-alert code,
-.markdown table code,
-.markdown th code,
-.markdown td code,
-.markdown h1 code,
-.markdown h2 code,
-.markdown h3 code,
-.markdown h4 code,
-.markdown h5 code,
-.markdown h6 code,
-.markdown strong code,
-.markdown em code,
-.markdown a code {
-    font-family: var(--code-font-family) !important;
-    font-weight: normal !important;
-    font-style: normal !important;
-    letter-spacing: 0 !important;
 }
 
 /* === AI智能体跑马灯动画 === */
