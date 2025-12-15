@@ -21,7 +21,7 @@ For more information about Cherry Studio, check [here](https://github.com/Cherry
 ## How to USE
 
 1. (Recommended but not necessary) Download Maple Mono NF CN from [Maple Font](https://github.com/subframe7536/maple-font/releases/download/v7.3/MapleMono-NF-CN-unhinted.zip). If you do not like the font, the default fallback font should be `Fira Code`.
-2. (Recommended but not necessary) Download Harmony OS Sans from [Harmony OS Sans](https://developer.huawei.com/images/download/general/HarmonyOS-Sans.zip). If you do not like the font, the default fallback font should be the font of your system UI.
+2. (Recommended but not necessary) Download DreamHan Sans and DreamHan Serif from [DreamHan Font](https://github.com/Pal3love/dream-han-cjk/releases). If you do not like the font, the system will use Microsoft YaHei as fallback font.
 3. Copy the content in [maple-neon.css](./themes/maple-neon.css) file(for original version) or download the raw file(for customization).
 4. Paste it into Cherry Studio.
 5. Here you go!
@@ -82,19 +82,19 @@ For more information about Cherry Studio, check [here](https://github.com/Cherry
 
     /* --- 字体规范对齐 --- */
     /* 基础字体 (对应规范中的 --font-family) */
-    --content-font: "HarmonyOS Sans", "HarmonyOS Sans SC", "Noto Sans", "Noto Sans SC", Ubuntu, -apple-system,
+    --content-font: "Microsoft YaHei", "微软雅黑", "DreamHan Serif", "梦源宋体", "Noto Sans", "Noto Sans SC", Ubuntu, -apple-system,
     BlinkMacSystemFont, "Segoe UI", system-ui, Roboto, Oxygen, Cantarell, "Open Sans", "Helvetica Neue", Arial,
     "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important;
     --content-font-weight: normal;
 
     /* 标题/UI 字体 (对应规范中的 --font-family-serif, 但这里保持无衬线优先) */
-    --title-font: "HarmonyOS Sans", "HarmonyOS Sans SC", "Noto Serif", "Noto Serif SC", "Microsoft Sans", -apple-system,
+    --title-font: "Microsoft YaHei", "微软雅黑", "DreamHan Sans", "梦源黑体", "Noto Serif", "Noto Serif SC", "Microsoft Sans", -apple-system,
     BlinkMacSystemFont, "Segoe UI", system-ui, Ubuntu, Roboto, Oxygen, Cantarell, "Open Sans", "Helvetica Neue",
     serif, Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important;
     --title-font-weight: bold;
 
     /* 代码字体 (对应规范中的 --code-font-family) */
-    --monospace-font: "Maple Mono NF CN", "Cascadia Code", "Fira Code", "Consolas", Menlo, Courier, monospace !important;
+    --monospace-font: "Maple Mono", "Maple Mono NF CN", "Cascadia Code", "Fira Code", "Consolas", Menlo, Courier, monospace !important;
     --monospace-font-weight: normal;
 
     --ui-font-weight: bold; /* 保留UI元素的特定粗细控制 */
@@ -223,6 +223,7 @@ code,
 
 - It provides modernized and aesthetic UI for Cherry Studio.
 - It mixes the Maple font with a neon-styled input-bar, creating a unique and visually appealing experience.
+- Uses DreamHan font series and Microsoft YaHei to provide excellent Chinese font display effects.
 
 ## Demonstration
 
@@ -249,7 +250,7 @@ For other themes, check [One More Glance](./OneMoreGlance.md)
 ### Fonts
 
 - Maple Font: <https://github.com/subframe7536/maple-font>
-- HarmonyOS Sans: <https://developer.huawei.com/consumer/cn/design/resource/>
+- DreamHan Sans: <https://github.com/Pal3love/dream-han-cjk/releases>
 
 ### Tools
 

@@ -4,7 +4,7 @@
 ![Cherry Studio](https://www.cherry-ai.com/assets/cherry-logo-CtmH594q.svg)
 ![Static Badge](https://img.shields.io/badge/Tailored_for-Cherry_Studio-red?logo=Github)
 ![Static Badge](https://img.shields.io/badge/License-MIT-blue)
-![Static Badge](https://img.shields.io/badge/Language-css-pink?logo=css)
+![Static Badge](https://img.shields.io/badge/Language-CSS-pink?logo=css)
 ![Static Badge](https://img.shields.io/badge/Release-v1.2.1-green)
 <div style="text-align: center">
 中文 |
@@ -20,17 +20,17 @@
 
 ## 使用方法
 
-1. （推荐但非必需）下载 [Maple 字体](https://github.com/subframe7536/maple-font/releases/download/v7.3/MapleMono-NF-CN-unhinted.zip)。如果你不喜欢该字体，默认的备用字体应为`Fira Code`。
-2. （推荐但非必需）从 [鸿蒙字体](https://developer.huawei.com/images/download/general/HarmonyOS-Sans.zip) 下载鸿蒙字体。如果你不喜欢该字体，默认的备用字体应为您的系统UI默认字体。
+1. （推荐但非必需）从 [Maple Font](https://github.com/subframe7536/maple-font/releases/download/v7.3/MapleMono-NF-CN-unhinted.zip) 下载Maple Mono NF CN。如果你不喜欢该字体，默认的备用字体应为`Fira Code`。
+2. （推荐但非必需）从 [梦源字体](https://github.com/Pal3love/dream-han-cjk/releases) 下载梦源黑体和梦源宋体。如果你不喜欢该字体，系统将使用微软雅黑作为备用字体。
 3. 复制 [maple-neon.css](../themes/maple-neon.css) 文件（原始版本）中的内容，或下载原始文件（用于定制）。
 4. 将其粘贴到 Cherry Studio 中。
 5. 完成！
 
 <details>
-<summary>或从这里复制！</summary>
+<summary>或者，如果你不想修改，直接从这里复制CSS！</summary>
 
 ```css
-/* Maple Neon Theme Font Minimal: A Maple Neon theme version that only specifies the font */
+/* Maple Neon Theme Font Minimal: 只指定字体的Maple Neon主题版本 */
 
 /* 动画定义 */
 @keyframes clickAnimation {
@@ -82,19 +82,19 @@
 
     /* --- 字体规范对齐 --- */
     /* 基础字体 (对应规范中的 --font-family) */
-    --content-font: "HarmonyOS Sans", "HarmonyOS Sans SC", "Noto Sans", "Noto Sans SC", Ubuntu, -apple-system,
+    --content-font: "Microsoft YaHei", "微软雅黑", "DreamHan Serif", "梦源宋体", "Noto Sans", "Noto Sans SC", Ubuntu, -apple-system,
     BlinkMacSystemFont, "Segoe UI", system-ui, Roboto, Oxygen, Cantarell, "Open Sans", "Helvetica Neue", Arial,
     "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important;
     --content-font-weight: normal;
 
     /* 标题/UI 字体 (对应规范中的 --font-family-serif, 但这里保持无衬线优先) */
-    --title-font: "HarmonyOS Sans", "HarmonyOS Sans SC", "Noto Serif", "Noto Serif SC", "Microsoft Sans", -apple-system,
+    --title-font: "Microsoft YaHei", "微软雅黑", "DreamHan Sans", "梦源黑体", "Noto Serif", "Noto Serif SC", "Microsoft Sans", -apple-system,
     BlinkMacSystemFont, "Segoe UI", system-ui, Ubuntu, Roboto, Oxygen, Cantarell, "Open Sans", "Helvetica Neue",
     serif, Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important;
     --title-font-weight: bold;
 
     /* 代码字体 (对应规范中的 --code-font-family) */
-    --monospace-font: "Maple Mono NF CN", "Cascadia Code", "Fira Code", "Consolas", Menlo, Courier, monospace !important;
+    --monospace-font: "Maple Mono", "Maple Mono NF CN", "Cascadia Code", "Fira Code", "Consolas", Menlo, Courier, monospace !important;
     --monospace-font-weight: normal;
 
     --ui-font-weight: bold; /* 保留UI元素的特定粗细控制 */
@@ -219,10 +219,11 @@ code,
 
 </details>
 
-## 特别之处？
+## 特别之处
 
 - 为Cherry Studio提供现代且美观的用户界面。
 - 将Maple字体与霓虹风格的输入栏相结合，打造独特且视觉效果出众的使用体验。
+- 使用梦源字体系列和微软雅黑提供优质的中文字体显示效果。
 
 ## 展示
 
@@ -249,7 +250,7 @@ code,
 ### 字体
 
 - Maple Font: <https://github.com/subframe7536/maple-font>
-- HarmonyOS Sans: <https://developer.huawei.com/consumer/cn/design/resource/>
+- DreamHan Sans: <https://github.com/Pal3love/dream-han-cjk/releases>
 
 ### 工具
 

@@ -4,10 +4,10 @@
 ![Cherry Studio](https://www.cherry-ai.com/assets/cherry-logo-CtmH594q.svg)
 ![Static Badge](https://img.shields.io/badge/Tailored_for-Cherry_Studio-red?logo=Github)
 ![Static Badge](https://img.shields.io/badge/License-MIT-blue)
-![Static Badge](https://img.shields.io/badge/Language-css-pink?logo=css)
+![Static Badge](https://img.shields.io/badge/Language-CSS-pink?logo=css)
 ![Static Badge](https://img.shields.io/badge/Release-v1.2.1-green)
 <div style="text-align: center">
-中文 |
+<a href="https://github.com/BoningtonChen/CherryStudio_themes/blob/master/docs/README.zh.md">中文</a> |
 <a href="https://github.com/BoningtonChen/CherryStudio_themes/blob/master/README.md">English</a> |
 <a href="https://github.com/BoningtonChen/CherryStudio_themes/blob/master/docs/README.fr.md">Français</a> |
 日本語
@@ -20,17 +20,17 @@ Cherry Studioに関する詳細情報は、[こちら](https://github.com/Cherry
 
 ## 使用方法
 
-1. （推奨ですが必須ではありません）[Maple フォント](https://github.com/subframe7536/maple-font/releases/download/v7.3/MapleMono-NF-CN-unhinted.zip)をダウンロードしてください。このフォントが好きでない場合、既定の代替フォントは`Fira Code`になります。
-2. （推奨ですが必須ではありません）[鴻蒙フォント](https://developer.huawei.com/images/download/general/HarmonyOS-Sans.zip)から鴻蒙フォントをダウンロードしてください。このフォントが好きでない場合、既定の代替フォントはシステムUIの既定のフォントになります。
-3. [maple-neon-minimal.css](../themes/maple-neon-minimal.css) ファイル（オリジナルバージョン）の内容をコピーするか、オリジナルファイルをダウンロードして（カスタマイズ用）ください。
+1. （推奨ですが必須ではありません）[Maple Font](https://github.com/subframe7536/maple-font/releases/download/v7.3/MapleMono-NF-CN-unhinted.zip)からMaple Mono NF CNをダウンロードしてください。このフォントが好きでない場合、既定の代替フォントは`Fira Code`になります。
+2. （推奨ですが必須ではありません）[DreamHan Font](https://github.com/Pal3love/dream-han-cjk/releases)からDreamHan SansとDreamHan Serifをダウンロードしてください。このフォントが好きでない場合、システムはMicrosoft YaHeiを代替フォントとして使用します。
+3. [maple-neon.css](../themes/maple-neon.css) ファイル（オリジナルバージョン）の内容をコピーするか、rawファイルをダウンロードして（カスタマイズ用）ください。
 4. それをCherry Studioに貼り付けてください。
 5. 完了！
 
 <details>
-<summary>またはここからコピーしましょう！</summary>
+<summary>または、変更したくない場合は、ここから直接CSSをコピーしてください！</summary>
 
 ```css
-/* Maple Neon Theme Font Minimal: A Maple Neon theme version that only specifies the font */
+/* Maple Neon Theme Font Minimal: フォントのみを指定するMaple Neonテーマバージョン */
 
 /* 动画定义 */
 @keyframes clickAnimation {
@@ -82,19 +82,19 @@ Cherry Studioに関する詳細情報は、[こちら](https://github.com/Cherry
 
     /* --- 字体规范对齐 --- */
     /* 基础字体 (对应规范中的 --font-family) */
-    --content-font: "HarmonyOS Sans", "HarmonyOS Sans SC", "Noto Sans", "Noto Sans SC", Ubuntu, -apple-system,
+    --content-font: "Microsoft YaHei", "微软雅黑", "DreamHan Serif", "梦源宋体", "Noto Sans", "Noto Sans SC", Ubuntu, -apple-system,
     BlinkMacSystemFont, "Segoe UI", system-ui, Roboto, Oxygen, Cantarell, "Open Sans", "Helvetica Neue", Arial,
     "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important;
     --content-font-weight: normal;
 
     /* 标题/UI 字体 (对应规范中的 --font-family-serif, 但这里保持无衬线优先) */
-    --title-font: "HarmonyOS Sans", "HarmonyOS Sans SC", "Noto Serif", "Noto Serif SC", "Microsoft Sans", -apple-system,
+    --title-font: "Microsoft YaHei", "微软雅黑", "DreamHan Sans", "梦源黑体", "Noto Serif", "Noto Serif SC", "Microsoft Sans", -apple-system,
     BlinkMacSystemFont, "Segoe UI", system-ui, Ubuntu, Roboto, Oxygen, Cantarell, "Open Sans", "Helvetica Neue",
     serif, Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important;
     --title-font-weight: bold;
 
     /* 代码字体 (对应规范中的 --code-font-family) */
-    --monospace-font: "Maple Mono NF CN", "Cascadia Code", "Fira Code", "Consolas", Menlo, Courier, monospace !important;
+    --monospace-font: "Maple Mono", "Maple Mono NF CN", "Cascadia Code", "Fira Code", "Consolas", Menlo, Courier, monospace !important;
     --monospace-font-weight: normal;
 
     --ui-font-weight: bold; /* 保留UI元素的特定粗细控制 */
@@ -223,8 +223,9 @@ code,
 
 - Cherry Studioにモダンで美しいユーザーインターフェイスを提供します。
 - Mapleフォントとネオンスタイルの入力欄を組み合わせ、ユニークで視覚的に印象的な使用体験を提供します。
+- DreamHanフォントシリーズとMicrosoft YaHeiを使用して、優れた中国語フォント表示効果を提供します。
 
-## 展示
+## デモンストレーション
 
 Cherry Studio v1.2.4をベースに
 ![明るいページ](../examples/main-page-light.png)
@@ -249,7 +250,7 @@ Cherry Studio v1.2.4をベースに
 ### フォント
 
 - Maple Font: <https://github.com/subframe7536/maple-font>
-- HarmonyOS Sans: <https://developer.huawei.com/consumer/cn/design/resource/>
+- DreamHan Sans: <https://github.com/Pal3love/dream-han-cjk/releases>
 
 ### ツール
 

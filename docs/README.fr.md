@@ -20,17 +20,17 @@ Pour plus d'informations sur Cherry Studio, consultez [ici](https://github.com/C
 
 ## Comment utiliser
 
-1. (Recommandé mais pas obligatoire) Téléchargez [Maple Font](https://github.com/subframe7536/maple-font/releases/download/v7.3/MapleMono-NF-CN-unhinted.zip). Si vous n'aimez pas la police d'écriture, la police de secours par défaut devrait être celle de `Fira Code`.
-2. (Recommandé mais pas obligatoire) Téléchargez Harmony OS Sans depuis [Harmony OS Sans](https://developer.huawei.com/images/download/general/HarmonyOS-Sans.zip). Si vous n'aimez pas la police d'écriture, la police de secours par défaut devrait être celle de l'interface utilisateur de votre système.
+1. (Recommandé mais pas obligatoire) Téléchargez Maple Mono NF CN depuis [Maple Font](https://github.com/subframe7536/maple-font/releases/download/v7.3/MapleMono-NF-CN-unhinted.zip). Si vous n'aimez pas cette police, la police de secours par défaut devrait être `Fira Code`.
+2. (Recommandé mais pas obligatoire) Téléchargez DreamHan Sans et DreamHan Serif depuis [DreamHan Font](https://github.com/Pal3love/dream-han-cjk/releases). Si vous n'aimez pas cette police, le système utilisera Microsoft YaHei comme police de secours.
 3. Copiez le contenu du fichier [maple-neon.css](../themes/maple-neon.css) (pour la version d'origine) ou téléchargez le fichier brut (pour la personnalisation).
-4. Colliez-le dans Cherry Studio.
+4. Collez-le dans Cherry Studio.
 5. Et voilà !
 
 <details>
-<summary>Ou copiez le CSS depuis ici !</summary>
+<summary>Ou, si vous ne voulez pas modifier, copiez directement le CSS depuis ici !</summary>
 
 ```css
-/* Maple Neon Theme Font Minimal: A Maple Neon theme version that only specifies the font */
+/* Maple Neon Theme Font Minimal: Une version du thème Maple Neon qui spécifie uniquement les polices */
 
 /* 动画定义 */
 @keyframes clickAnimation {
@@ -82,19 +82,19 @@ Pour plus d'informations sur Cherry Studio, consultez [ici](https://github.com/C
 
     /* --- 字体规范对齐 --- */
     /* 基础字体 (对应规范中的 --font-family) */
-    --content-font: "HarmonyOS Sans", "HarmonyOS Sans SC", "Noto Sans", "Noto Sans SC", Ubuntu, -apple-system,
+    --content-font: "Microsoft YaHei", "微软雅黑", "DreamHan Serif", "梦源宋体", "Noto Sans", "Noto Sans SC", Ubuntu, -apple-system,
     BlinkMacSystemFont, "Segoe UI", system-ui, Roboto, Oxygen, Cantarell, "Open Sans", "Helvetica Neue", Arial,
     "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important;
     --content-font-weight: normal;
 
     /* 标题/UI 字体 (对应规范中的 --font-family-serif, 但这里保持无衬线优先) */
-    --title-font: "HarmonyOS Sans", "HarmonyOS Sans SC", "Noto Serif", "Noto Serif SC", "Microsoft Sans", -apple-system,
+    --title-font: "Microsoft YaHei", "微软雅黑", "DreamHan Sans", "梦源黑体", "Noto Serif", "Noto Serif SC", "Microsoft Sans", -apple-system,
     BlinkMacSystemFont, "Segoe UI", system-ui, Ubuntu, Roboto, Oxygen, Cantarell, "Open Sans", "Helvetica Neue",
     serif, Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important;
     --title-font-weight: bold;
 
     /* 代码字体 (对应规范中的 --code-font-family) */
-    --monospace-font: "Maple Mono NF CN", "Cascadia Code", "Fira Code", "Consolas", Menlo, Courier, monospace !important;
+    --monospace-font: "Maple Mono", "Maple Mono NF CN", "Cascadia Code", "Fira Code", "Consolas", Menlo, Courier, monospace !important;
     --monospace-font-weight: normal;
 
     --ui-font-weight: bold; /* 保留UI元素的特定粗细控制 */
@@ -223,8 +223,9 @@ code,
 
 - Il propose une interface utilisateur modernisée et esthétique pour Cherry Studio.
 - Il mêle la police Maple à une zone de saisie au style néon, créant une expérience unique et visuellement attractive.
+- Utilise la série de polices DreamHan et Microsoft YaHei pour fournir un excellent affichage des polices chinoises.
 
-## Exposition
+## Démonstration
 
 Basé sur Cherry Studio v1.2.4
 ![Page claire](../examples/main-page-light.png)
@@ -248,8 +249,8 @@ Pour d'autres thèmes, consultez [Un dernier coup d'œil](../OneMoreGlance.md)
 
 ### Polices
 
-- Police Maple : <https://github.com/subframe7536/maple-font>
-- Police HarmonyOS: <https://developer.huawei.com/consumer/cn/design/resource/>
+- Maple Font : <https://github.com/subframe7536/maple-font>
+- DreamHan Sans : <https://github.com/Pal3love/dream-han-cjk/releases>
 
 ### Outils  
 
