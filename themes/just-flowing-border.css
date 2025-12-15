@@ -1,31 +1,58 @@
-/* 优雅流彩动画 */
-@keyframes elegantFlow {
+/* Maple Neon Minimal Theme for Cherry Studio
+   专注于输入框AI智能体运行时的跑马灯效果 */
+
+/* === AI智能体跑马灯动画 === */
+@keyframes ai-running-gradient {
     0% {
-        background-position: 0 50%;
+        background-position: 0% 50%;
     }
-    50% {
+    25% {
         background-position: 100% 50%;
     }
+    50% {
+        background-position: 200% 50%;
+    }
+    75% {
+        background-position: 300% 50%;
+    }
     100% {
-        background-position: 0 50%;
+        background-position: 400% 50%;
     }
 }
 
-/* 轻柔发光 */
-@keyframes softGlow {
-    0%, 100% {
-        box-shadow: 0 0 10px rgba(255, 106, 1, 0.1);
+/* AI思考状态脉冲 */
+@keyframes ai-thinking-pulse {
+    0%,
+    100% {
+        box-shadow: 0 0 5px rgba(255, 106, 1, 0.2);
     }
     50% {
-        box-shadow: 0 0 15px rgba(138, 43, 226, 0.15);
+        box-shadow: 0 0 20px rgba(138, 43, 226, 0.6);
     }
 }
 
-/* 输入框优雅流彩效果 */
-#inputbar {
-    position: relative;
+/* 数据流动效果 */
+@keyframes ai-data-flow {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
 }
 
+/* === 输入框跑马灯效果 === */
+#inputbar {
+    position: relative;
+    border-radius: 12px;
+}
+
+/* AI运行时的跑马灯边框 */
 #inputbar::before {
     content: "";
     position: absolute;
@@ -34,29 +61,156 @@
     padding: 2px;
     background: linear-gradient(
         90deg,
-        #ff6a01,    /* 爱马仕橙 */
-        #f8c91c,    /* 那不勒斯黄 */
-        #8a2be2,    /* 紫罗兰色 */
-        #00bfff,    /* 天蓝色 */
-        #ff6a01     /* 回到橙色 */
+        #ff6a01,
+        /* 爱马仕橙 */ #f8c91c,
+        /* 那不勒斯黄 */ #8a2be2,
+        /* 紫罗兰 */ #00d4ff,
+        /* 青色 */ #f8c91c,
+        /* 那不勒斯黄 */ #ff6a01 /* 爱马仕橙 */
     );
-    background-size: 300% 300%;
+    background-size: 300% 100%;
     mask:
-        linear-gradient(#000 0 0) content-box,
-        linear-gradient(#000 0 0);
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
     -webkit-mask-composite: destination-out;
     mask-composite: exclude;
-    animation: elegantFlow 6s ease-in-out infinite;
+    animation: ai-running-gradient 7s linear infinite;
     opacity: 0;
-    transition: opacity 0.6s ease;
+    transition: opacity 0.4s ease-in-out;
     pointer-events: none;
     z-index: -1;
 }
 
-#inputbar:focus-within::before {
+/* 激活跑马灯效果的条件 */
+#inputbar:focus-within::before,
+#inputbar.ai-active::before,
+#inputbar[data-ai-status="running"]::before {
     opacity: 1;
 }
 
-#inputbar:focus-within {
-    animation: softGlow 3s ease-in-out infinite;
+/* AI思考状态的额外效果 */
+#inputbar.ai-thinking {
+    animation: ai-thinking-pulse 4s ease-in-out infinite;
+}
+
+/* 数据流动覆盖层 */
+#inputbar.ai-thinking::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(0, 212, 255, 0.1),
+        transparent
+    );
+    animation: ai-data-flow 3.5s ease-in-out infinite;
+    border-radius: inherit;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* === 输入框内部样式优化 === */
+#inputbar input,
+#inputbar textarea {
+    position: relative;
+    z-index: 2;
+    transition: all 0.3s ease;
+}
+
+/* === 状态指示器 === */
+.ai-status-dot {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #8a2be2;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 3;
+}
+
+#inputbar.ai-thinking .ai-status-dot,
+#inputbar[data-ai-status="running"] .ai-status-dot {
+    opacity: 1;
+    animation: ai-thinking-pulse 3s ease-in-out infinite;
+}
+
+/* === 辅助类 === */
+/* 手动触发AI运行效果 */
+.ai-mode-active #inputbar::before {
+    opacity: 1 !important;
+}
+
+/* 禁用AI效果 */
+.ai-mode-disabled #inputbar::before,
+.ai-mode-disabled #inputbar::after {
+    opacity: 0 !important;
+    animation: none !important;
+}
+
+/* === 响应式设计 === */
+@media (max-width: 768px) {
+    #inputbar::before {
+        inset: -1px;
+        padding: 1px;
+    }
+
+    #inputbar::before {
+        background-size: 200% 100%;
+        animation-duration: 5.5s;
+    }
+}
+
+/* === 无障碍支持 === */
+@media (prefers-reduced-motion: reduce) {
+    #inputbar::before,
+    #inputbar::after,
+    #inputbar,
+    .ai-status-dot {
+        animation: none !important;
+    }
+
+    #inputbar::before {
+        background: linear-gradient(90deg, #ff6a01, #8a2be2);
+        background-size: 100% 100%;
+    }
+}
+
+/* === 高对比度模式 === */
+@media (prefers-contrast: high) {
+    #inputbar::before {
+        background: linear-gradient(
+            90deg,
+            #ff8c00,
+            #ffd700,
+            #9370db,
+            #00bfff,
+            #ffd700,
+            #ff8c00
+        );
+    }
+}
+
+/* === 浏览器兼容性修复 === */
+/* Firefox支持 */
+@supports not (-webkit-mask-composite: destination-out) {
+    #inputbar::before {
+        mask-composite: exclude;
+    }
+}
+
+/* Safari支持 */
+@supports (-webkit-mask-composite: destination-out) {
+    #inputbar::before {
+        -webkit-mask-composite: destination-out;
+    }
 }
